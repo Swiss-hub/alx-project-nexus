@@ -1,9 +1,11 @@
 import os
 import requests
-from django.conf import settings
+from decouple import config
+# from django.conf import settings   # Uncomment if using Django settings directly
 
 TMDB_BASE_URL = "https://api.themoviedb.org/3"
-TMDB_API_KEY = os.getenv("TMDB_API_KEY", settings.TMDB_API_KEY)
+# TMDB_API_KEY = os.getenv("TMDB_API_KEY", settings.TMDB_API_KEY) # Use the key from settings.py
+TMDB_API_KEY = config("TMDB_API_KEY")
 
 def get_trending_movies():
   """Fetch tending movies from TMDB."""

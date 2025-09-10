@@ -113,14 +113,42 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# CACHES configuration with Redis
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",  # Redis runs on localhost, DB index 1
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            # "PASSWORD": "your_redis_password",  # Uncomment if Redis is password-protected
+        }
+    }
+}
+
+#CACHES configuration without Redis
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+#         "LOCATION": "unique-snowflake",
+#     }
+# }
+
+
+# Optionally use Redis for Django sessions too:
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+# Cache timeout (seconds) - adjust as needed
+CACHE_TTL = 60 * 15  # 15 minutes
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
       'rest_framework.authentication.SessionAuthentication',
       'rest_framework.authentication.BasicAuthentication',
     ],
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
-    # ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
     # "DEFAULT_PERMISSION_CLASSES": [
     #     "rest_framework.permissions.IsAuthenticated",
     # ],
@@ -131,22 +159,33 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Movie Recommendation API',
-    'DESCRIPTION': 'Backend API for trending & recommended movies',
-    'VERSION': '1.0.0',
+    "TITLE": "Movies API",
+    "DESCRIPTION": "API for browsing movies (Trending, Search, Details, Upcoming)",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "COMPONENTS": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+            }
+        }
+    },
+    "SECURITY": [{"BearerAuth": []}],
 }
 
 SWAGGER_SETTINGS = {
     "SECURITY_DEFINITIONS": {
-        "ApiKeyAuth": {
-            "type": "apiKey",
-            "in": "query",       # TMDB expects it in the query string
-            "name": "api_key",   # The query param name used by TMDB
-        }
+        # "ApiKeyAuth": {
+        #     "type": "apiKey",
+        #     "in": "query",       # TMDB expects it in the query string
+        #     "name": "api_key",   # The query param name used by TMDB
+        #     "value": TMDB_API_KEY,
+        # }
     },
     "USE_SESSION_AUTH": False,  # disable login popup
 }
-
 
 
 # Internationalization
