@@ -1,12 +1,28 @@
 # alx-project-nexus
 
-# ALX Project Nexus – Backend Engineering Documentation Hub
+# ALX Project Nexus – ProDev FrontEnd and ProDev Backend Engineering Documentation Hub
 
 ## 📖 Overview  
-This repository serves as a **documentation hub** for my major learnings from the **ProDev Backend Engineering Program**.  
+This repository serves as a **documentation hub** for my major learnings from the **ProDev Backend Engineering Program** **&** **ProDev Backend Engineering Program**.  
 It captures the concepts, tools, best practices, and personal insights I have gained, and will act as a reference point for future projects and collaborations.
 
 ---
+
+## 🎬 Frontend Features
+
+- **Modern UI/UX**: Netflix-inspired design with custom color palette and font.
+- **Responsive Design**: Fully responsive layouts using Tailwind’s grid and flex utilities, custom breakpoints, and flexible images.
+- **Accessible Navigation**: Keyboard navigation, focus rings, and ARIA labels for improved accessibility.
+- **Flowbite Components**: Prebuilt, customizable UI components (Navbar, Carousel, Card, Badge, Button, Spinner, Footer, etc.).
+- **Hero Banner & Carousel**: Eye-catching hero section and image carousel on the Home page.
+- **Movie Cards**: Animated, responsive cards with fallback images, ratings, and favorite buttons.
+- **Favorites Page**: Save and view favorite movies with a beautiful empty state.
+- **Search Page**: Search for movies with a styled form, loading spinner, and empty state illustration.
+- **Back to Top Button**: Floating button for easy navigation on long pages.
+- **Loading States**: Animated spinners for all async data fetches.
+- **Custom Animations**: Smooth fade-in for images and subtle hover effects.
+- **Footer**: Project info and resource links.
+
 
 ## 🚀 Key Technologies Covered  
 - **Python** – Core programming language for backend development.  
@@ -38,27 +54,9 @@ It captures the concepts, tools, best practices, and personal insights I have ga
 ---
 
 ## 🏆 Best Practices & Personal Takeaways  
-- Write clean, modular, and well-documented code.  
-- Always validate and sanitize incoming API data.  
-- Use version control (Git) effectively with clear commit messages.  
-- Monitor application performance and implement logging early.  
-- Collaborate with frontend engineers early in the development cycle.  
 
----
 
 ## 🤝 Collaboration – Key to Success  
-
-### Who to Collaborate With  
-- **Fellow ProDev Backend Learners** – Exchange ideas, debug issues, and co-build features.  
-- **ProDev Frontend Learners** – Provide backend APIs that power frontend projects.  
-
-### Where to Collaborate  
-- **Discord Channel:** `#ProDevProjectNexus`  
-  - Share updates and resources.  
-  - Ask questions and get help.  
-  - Coordinate with other learners for project alignment.  
-
-### ProDev Tip 💡  
 - Use the **first week** to:  
   1. Communicate which project you are developing.  
   2. Identify **ProDev Frontend learners** working on the same project.  
@@ -74,5 +72,6 @@ It captures the concepts, tools, best practices, and personal insights I have ga
 ---
 
 **Author:** Ilechukwu Francis C  
-**Program:** ProDev Backend Engineering  
+**Program:** ProDev FrontEnd ProDev Backend Engineering  
 **Repository:** [alx-project-nexus](https://github.com/Swiss-hub/alx-project-nexus)
+ub.com/Swiss-hub/alx-project-nexus)
