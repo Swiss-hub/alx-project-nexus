@@ -1,40 +1,47 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
+import { Card, Badge, Button } from "flowbite-react";
 
 interface MovieCardProps {
     id: number;
     title: string;
     posterPath: string;
-    onFavorite?: () => void;  //optional callback for favorites
+    rating: number | string;
+    onFavorite?: () => void;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ id, title, posterPath, onFavorite }) => {
+
+const fallbackImg = "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80";
+
+const MovieCard: React.FC<MovieCardProps> = ({ id, title, posterPath, rating, onFavorite }) => {
     const posterUrl = posterPath
         ? `https://image.tmdb.org/t/p/w500${posterPath}`
-        : "/placeholder.jpg"; // fallback image if no poster
+        : fallbackImg;
 
     return (
-        <div className="bg-gray-800 rounded-lg shadow hover:scale-105 transition transform duration-200">
-            <Link to={`/movie/${id}`}>
+        <Card className="h-full flex flex-col justify-between shadow-lg hover:scale-105 hover:shadow-primary/40 transition-transform duration-200 bg-gray-900/80 border border-gray-800">
+            <Link to={`/movie/${id}`} className="block relative group">
                 <img
                     src={posterUrl}
                     alt={title}
-                    className="w-full h-72 object-cover rounded-t-lg"
+                    className="w-full movie-card-img object-cover rounded-t-lg group-hover:opacity-80 transition fade-in"
+                    onError={e => (e.currentTarget.src = fallbackImg)}
                 />
+                <span className="absolute top-2 right-2 z-10">
+                    <Badge color="failure">{rating}</Badge>
+                </span>
             </Link>
-            <div className="p-3 flex justify-between items-center text-white">
-                <h3 className="font-semibold text-sm truncate">{title}</h3>
-                {onFavorite && (
-                    <button
-                        onClick={onFavorite}
-                        className="ml-2 text-red-400 hover:text-red-500 text-lg"
-                        title="Save to Favorites"
-                    >
-                        ❤️
-                    </button>
-                )}
+            <div className="flex flex-col flex-1 justify-between mt-2">
+                <h3 className="font-semibold text-base truncate mb-1">{title}</h3>
+                {/* Optionally, add genre badges here if available */}
             </div>
-        </div>
+            {onFavorite && (
+                <Button color="failure" size="xs" onClick={onFavorite} className="mt-2">
+                    ❤️ Favorite
+                </Button>
+            )}
+        </Card>
     );
 };
 
