@@ -25,6 +25,9 @@ It captures the concepts, tools, best practices, and personal insights I have ga
 
 
 ## 🚀 Key Technologies Covered  
+- **React** – Core programming language for frontend development.
+- **Typescript** – Addition of static typing for better code quality.
+- **Flowbite** – UI component library for web development
 - **Python** – Core programming language for backend development.  
 - **Django** – High-level Python web framework for rapid development.  
 - **REST APIs** – Designing and implementing RESTful endpoints.  
